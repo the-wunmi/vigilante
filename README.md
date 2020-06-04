@@ -19,18 +19,18 @@ require('./')
 
 ```json
 {
-  host: 'github.com',
-  port: null,
-  hash: null,
-  search: null,
-  query: null,
-  pathname: '/the-wunmi',
-  path: '/the-wunmi',
-  href: 'https://github.com/the-wunmi',
-  url: undefined,
-  method: 'GET',
-  headers: undefined,
-  body: undefined
+  "host": "github.com",
+  "port": null,
+  "hash": null,
+  "search": null,
+  "query": null,
+  "pathname": "/the-wunmi",
+  "path": "/the-wunmi",
+  "href": "https://github.com/the-wunmi",
+  "url": "",
+  "method": "GET",
+  "headers": "",
+  "body": ""
 }
 ```
 
@@ -38,11 +38,11 @@ require('./')
 
 ```json
 {
-  statusCode: 200,
-  headers: {...},
-  trailers: {},
-  httpVersion: '1.1',
-  url: '',
-  body: '...'
+  "statusCode": 200,
+  "headers": {},
+  "trailers": {},
+  "httpVersion": "1.1",
+  "url": "",
+  "body": "..."
 }
 ```
