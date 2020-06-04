@@ -6,4 +6,5 @@ require('./')
   .on('error', (request, response) => {
     console.log(request, response)
   })
-https.request('https://google.com', { port: 443 }).end()
+
+https.request('https://github.com/the-wunmi').end()

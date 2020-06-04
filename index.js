@@ -7,7 +7,7 @@ const protocols = {
   'http:': http.request,
   'https:': https.request
 }
-function attachToRequest(URI, options) {
+function attachToOutgoingRequest(URI, options) {
   if (typeof URI === "string") options = { ...url.parse(URI), protocol: URI.startsWith("https") ? "https:" : "http:", ...(options || {}) }
   else if (typeof URI === "object") options = URI
   const request = protocols[options.protocol].apply(this, arguments);
@@ -21,14 +21,14 @@ function attachToRequest(URI, options) {
     res.on('data', chunk => data += chunk);
     res.on('end', () => vigilante.emit('success', _request, {
       statusCode: res.statusCode, headers: res.headers, trailers: res.trailers,
-      httpVersion: res.httpVersion, url: res.url
+      httpVersion: res.httpVersion, url: res.url, body: data
     }));
     res.on('error', error => vigilante.emit('error', _request, error));
   });
   request.on('error', error => vigilante.emit('error', _request, error))
   return request
 }
-http.request = attachToRequest.bind(http)
-https.request = attachToRequest.bind(https);
+http.request = attachToOutgoingRequest.bind(http)
+https.request = attachToOutgoingRequest.bind(https);
 
 const vigilante = module.exports = new events.EventEmitter();
